@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
+}
+html {
+  scroll-behavior: smooth; 
+}
+
+body {
+  overflow: auto;
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+}
+
+.nunito-sans-uniquifier {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #115594;
+  padding: 10px 30px;
+}
+
+.Logo img {
+  width: 45px;
+  height: 45px;
+  margin-right: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ffffff;
+  margin: 0 12px;
+  padding: 8px 12px;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #07364d;
+  border-radius: 5px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #1a2b35;
+  min-width: 160px;
+  margin-top: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+} 
+
+.dropdown_content a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.dropdown_content a:hover {
+  background-color: #3b4a5a;
+}
+
+.dropdown:hover .dropdown_content {
+  display: block;
+}
+
+.header{
+  background-image: url(ger.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px;
+  height: 100vh;
+  text-align: center;
+  animation: bgSlide 20s linear infinite;
+  color: white;
+}
+
+.header a{
+  background-color: rgb(22, 172, 139);
+  color: white;
+  text-decoration: none;
+  padding: 5px 15px;
+  box-shadow: 0 3px;
+  border-radius: 9px;
+}
+
+.header p{
+  margin-bottom: 2%;
+}
+
+.header a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+@keyframes bgSlide{
+  0%{
+    background-image: url(ger.jpg);
+  }
+
+  20%{
+    background-image: url(ger.jpg);
+  }
+
+  25%{
+    background-image: url(kel.png);
+  }
+
+  45%{
+    background-image: url(kel.png);
+  }
+
+  50%{
+    background-image: url(main.jpg);
+  }
+
+  70%{
+    background-image: url(main.jpg);
+  }
+
+  75%{
+    background-image: url(tin.jpg);
+  }
+
+  95%{
+    background-image: url(tin.jpg);
+  }
+
+  100%{
+    background-image: url(tin.jpg);
+  }
+}
+
+#scrollTopBtn{
+  right: 30px;
+  bottom: 30px;
+  display: none;
+  position: fixed;
+  background-color: rgb(22, 172, 139);
+  font-size: large;
+  padding: 30px;
+  border:none;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px black;
+}
+
+main{
+  height: 2000px;
+}
+
+.Latar{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #07364d;
+  padding: 3%;
+}
+
+.Latar img{
+  margin-left: 20px;
+  width: 50%;
+  height: 10%;
+  box-shadow: 0px 4px 8px;
+}
+
+.IsiLatarBelakang{
+  text-align: center;
+  color: white;
+}
+
+.Latar h1{
+  display: inline-block;
+  
+}
+
+.Latar p{
+  margin-top: 20px;
+  text-align: justify;
+}
+
+@media (max-width:768px) {
+
+  .navbar .navbar{
+    position: absolute;
+    right: 5px;
+    top: 50px;
+    width: 90px;
+    max-width: 500px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: aqua;
+    text-decoration: column;
+    display: none;
+  }
+}
+
+.navbar.navbar.active {
+  display: flex;
+}
+
+.navbar.navbar >a,
+.navbar.navbar >dropdown >a{
+  display: blok;
+  width: 100%;
+  padding: 12%;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px aqua;
+  box-sizing: border-box;
+}

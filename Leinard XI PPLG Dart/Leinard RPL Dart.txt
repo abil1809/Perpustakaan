@@ -1,0 +1,35 @@
+import 'dart:io';
+
+void main() {
+  String lanjut = 'y';
+
+  while (lanjut.toLowerCase() == 'y') {
+    stdout.write('Masukkan nama: ');
+    String nama = stdin.readLineSync()!;
+
+    stdout.write('Masukkan kelas: ');
+    String kelas = stdin.readLineSync()!;
+
+    stdout.write('Masukkan nilai: ');
+    int nilai = int.parse(stdin.readLineSync()!);
+
+    String status;
+    if (nilai >= 75) {
+      status = 'Lulus';
+    } else {
+      status = 'Tidak Lulus';
+    }
+
+    print('\n=== HASIL ===');
+    print('Nama   : $nama');
+    print('Kelas  : $kelas');
+    print('Nilai  : $nilai');
+    print('Status : $status\n');
+
+    stdout.write('Ingin input lagi? (y/t): ');
+    lanjut = stdin.readLineSync()!;
+    print('');
+  }
+
+  print('Program selesai.');
+}

@@ -1,0 +1,232 @@
+C:\laragon\www
+λ cd/
+
+C:\
+λ cd laragon/bin/mysql
+
+C:\laragon\bin\mysql
+λ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.4.3 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create database penjualan;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use penjualan;
+Database changed
+mysql> create table Transaksi(Id_Transaksi varchar(100) PRIMARY KEY, Nama_Barang varchar(100), Jumlah int(100), Harga varchar(100));
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_penjualan |
++---------------------+
+| transaksi           |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> desc transaksi;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| Id_Transaksi | varchar(100) | NO   | PRI | NULL    |       |
+| Nama_Barang  | varchar(100) | YES  |     | NULL    |       |
+| Jumlah       | int          | YES  |     | NULL    |       |
+| Harga        | varchar(100) | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into transaksi values ('001', 'Buku Tulis', '5', 'Rp 20.000');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into transaksi values ('002', 'Pensil', '5', 'Rp 25.000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into transaksi values ('003', 'Pulpen', '3', 'Rp 15.000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into transaksi values ('004', 'Spidol', '2', 'Rp 10.000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from transaksi;
++--------------+-------------+--------+-----------+
+| Id_Transaksi | Nama_Barang | Jumlah | Harga     |
++--------------+-------------+--------+-----------+
+| 001          | Buku Tulis  |      5 | Rp 20.000 |
+| 002          | Pensil      |      5 | Rp 25.000 |
+| 003          | Pulpen      |      3 | Rp 15.000 |
+| 004          | Spidol      |      2 | Rp 10.000 |
++--------------+-------------+--------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select Id_Penjualan
+    -> ;
+ERROR 1054 (42S22): Unknown column 'Id_Penjualan' in 'field list'
+mysql> select MIN (Jumlah) AS Nilai_Terkecil from transaksi;
+ERROR 1630 (42000): FUNCTION penjualan.MIN does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> SELECT MIN (Jumlah) AS Nilai_Terkecil FROM transaksi;
+ERROR 1630 (42000): FUNCTION penjualan.MIN does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> SELECT MIN Jumlah AS Nilai_Terkecil FROM transaksi;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS Nilai_Terkecil FROM transaksi' at line 1
+mysql> SELECT MIN(Jumlah) AS Nilai_Terkecil FROM transaksi;
++----------------+
+| Nilai_Terkecil |
++----------------+
+|              2 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(Jumlah) AS Nilai_Terbesar FROM transaksi;
++----------------+
+| Nilai_Terbesar |
++----------------+
+|              5 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(Jumlah) AS Jumlah_Data FROM transaksi;
++-------------+
+| Jumlah_Data |
++-------------+
+|           4 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(Harga) AS Rata__Harga FROM transaksi;
++-------------+
+| Rata__Harga |
++-------------+
+|           0 |
++-------------+
+1 row in set, 4 warnings (0.00 sec)
+
+mysql> SELECT AVG(Harga) AS Rata_Rata_Harga FROM transaksi;
++-----------------+
+| Rata_Rata_Harga |
++-----------------+
+|               0 |
++-----------------+
+1 row in set, 4 warnings (0.00 sec)
+
+mysql> update transaksi set harga='20000' where Id_Transaksi ='001';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update transaksi set harga='25000' where Id_Transaksi ='002';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update transaksi set harga='15000' where Id_Transaksi ='003';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update transaksi set harga='10000' where Id_Transaksi ='004';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from transaksi;
++--------------+-------------+--------+-------+
+| Id_Transaksi | Nama_Barang | Jumlah | Harga |
++--------------+-------------+--------+-------+
+| 001          | Buku Tulis  |      5 | 20000 |
+| 002          | Pensil      |      5 | 25000 |
+| 003          | Pulpen      |      3 | 15000 |
+| 004          | Spidol      |      2 | 10000 |
++--------------+-------------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT SUM(Harga) AS Rata_Rata_Harga FROM transaksi;
++-----------------+
+| Rata_Rata_Harga |
++-----------------+
+|           70000 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(Harga) AS Rata_Rata_Harga FROM transaksi;
++-----------------+
+| Rata_Rata_Harga |
++-----------------+
+|           17500 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(Harga) AS Total_Harga FROM transaksi;
++-------------+
+| Total_Harga |
++-------------+
+|       70000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select Nama_Barang, Jumlah from transaksi where Harga < (select AVG(Harga) from transaksi);
++-------------+--------+
+| Nama_Barang | Jumlah |
++-------------+--------+
+| Pulpen      |      3 |
+| Spidol      |      2 |
++-------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select Nama_Barang, Jumlah from transaksi where Harga > (select MAX(Jumlah) from transaksi);
++-------------+--------+
+| Nama_Barang | Jumlah |
++-------------+--------+
+| Buku Tulis  |      5 |
+| Pensil      |      5 |
+| Pulpen      |      3 |
+| Spidol      |      2 |
++-------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select Nama_Barang, Harga from transaksi where Harga > (select MAX(Jumlah) from transaksi);
++-------------+-------+
+| Nama_Barang | Harga |
++-------------+-------+
+| Buku Tulis  | 20000 |
+| Pensil      | 25000 |
+| Pulpen      | 15000 |
+| Spidol      | 10000 |
++-------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select Id_Barang, Nama_Barang from transaksi where Harga = (select SUM(Harga) from transaksi);
+ERROR 1054 (42S22): Unknown column 'Id_Barang' in 'field list'
+mysql> select Id_Transaksi, Nama_Barang from transaksi where Harga = (select SUM(Harga) from transaksi);
+Empty set (0.00 sec)
+
+mysql> select Nama_Barang from transaksi where Jumlah > (select MIN(Jumlah) from transaksi);
++-------------+
+| Nama_Barang |
++-------------+
+| Buku Tulis  |
+| Pensil      |
+| Pulpen      |
++-------------+
+3 rows in set (0.00 sec)
+
+mysql> select Id_Transaksi, Nama_Barang from transaksi where Jumlah = (select AVG(Harga) from transaksi);
+Empty set (0.00 sec)
+
+mysql>

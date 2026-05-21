@@ -1,0 +1,328 @@
+Microsoft Windows [Version 10.0.19044.1766]
+(c) Microsoft Corporation. All rights reserved.
+
+c:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++------------------------------+
+| Database                     |
++------------------------------+
+| apakah                       |
+| aplikasi_tiket_fix           |
+| aplikasi_tiketing            |
+| aplikasi_tiketing3           |
+| aplikasi_tiketings           |
+| attendance                   |
+| belajar                      |
+| belajar_tcl                  |
+| crud                         |
+| crud1                        |
+| database_aplikasi_tiket_ukom |
+| db_counter                   |
+| db_penjualan                 |
+| db_spp                       |
+| db_transaksi                 |
+| information_schema           |
+| kampus                       |
+| kereta                       |
+| login                        |
+| loginin                      |
+| mahasiswa                    |
+| malasngoding                 |
+| minizoo                      |
+| modul_uji                    |
+| museum                       |
+| mysql                        |
+| nusan_spp                    |
+| nusantara                    |
+| pendaftaran                  |
+| penjualan                    |
+| penjualantiketkereta         |
+| performance_schema           |
+| perpustakaan                 |
+| perpustakaan digital         |
+| perpustakaan1                |
+| perpustakaan12               |
+| perpustakaan13               |
+| perpustakaan2                |
+| perpustakaan3                |
+| perpustakaan_nuxxi           |
+| phpmyadmin                   |
+| portofolio                   |
+| project1                     |
+| psb                          |
+| rpl1                         |
+| rumah_sakit                  |
+| school_1                     |
+| sekolah                      |
+| siakad                       |
+| spp_c12                      |
+| spp_gen2                     |
+| spp_one                      |
+| spp_ror                      |
+| spp_sekolah                  |
+| swing_demo                   |
+| test                         |
+| tiket_kereta                 |
+| tiket_kereta2                |
+| tiketing_kereta              |
+| tiketing_kereta12            |
+| toko                         |
+| toko_online                  |
+| train_ticketing_system       |
+| tutorial_barang              |
+| tutorial_phpoop              |
+| tutorialjava                 |
+| wan                          |
+| web_programmer_junior        |
+| wordpress                    |
++------------------------------+
+69 rows in set (0.002 sec)
+
+MariaDB [(none)]> use sekolah;
+Database changed
+MariaDB [sekolah]> show tables;
++-------------------+
+| Tables_in_sekolah |
++-------------------+
+| guru              |
+| siswa             |
++-------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [sekolah]> desc guru;
++---------------+-------------------------------+------+-----+---------+-------+
+| Field         | Type                          | Null | Key | Default | Extra |
++---------------+-------------------------------+------+-----+---------+-------+
+| ID_GURU       | varchar(100)                  | NO   | PRI | NULL    |       |
+| NAMA_GURU     | varchar(100)                  | YES  |     | NULL    |       |
+| ALAMAT        | text                          | YES  |     | NULL    |       |
+| JENIS_KELAMIN | enum('PEREMPUAN','LAKI-LAKI') | YES  |     | NULL    |       |
++---------------+-------------------------------+------+-----+---------+-------+
+4 rows in set (0.023 sec)
+
+MariaDB [sekolah]> truncate guru;
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [sekolah]> select * from guru;
+Empty set (0.000 sec)
+
+MariaDB [sekolah]> insert table guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("1", "Supri", "Ciputat", "LAKI-LAKI");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("1", "Supri", ...' at line 1
+MariaDB [sekolah]> insert table guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("1","Supri","Ciputat","LAKI-LAKI");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("1","Supri","C...' at line 1
+MariaDB [sekolah]> insert into table guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("1","Supri","Ciputat","LAKI-LAKI");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("1","Supri","C...' at line 1
+MariaDB [sekolah]> insert into guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("1","Supri","Ciputat","LAKI-LAKI");
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [sekolah]> select * from guru;
++---------+-----------+---------+---------------+
+| ID_GURU | NAMA_GURU | ALAMAT  | JENIS_KELAMIN |
++---------+-----------+---------+---------------+
+| 1       | Supri     | Ciputat | LAKI-LAKI     |
++---------+-----------+---------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [sekolah]> insert into guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("2","Maya","Cirendeu","Perempuan");
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [sekolah]> insert into guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("3","Lala","Legoso","PEREMPUAN");
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [sekolah]> insert into guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("4","Akmal","PONCAB","LAKI-LAKI");
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [sekolah]> insert into guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("5","Jamal","Cinere","LAKI-LAKI");
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [sekolah]> insert into guru (ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN) values ("6","Susi","Cinere","PEREMPUAN");
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [sekolah]> select * from guru;
++---------+-----------+----------+---------------+
+| ID_GURU | NAMA_GURU | ALAMAT   | JENIS_KELAMIN |
++---------+-----------+----------+---------------+
+| 1       | Supri     | Ciputat  | LAKI-LAKI     |
+| 2       | Maya      | Cirendeu | PEREMPUAN     |
+| 3       | Lala      | Legoso   | PEREMPUAN     |
+| 4       | Akmal     | PONCAB   | LAKI-LAKI     |
+| 5       | Jamal     | Cinere   | LAKI-LAKI     |
+| 6       | Susi      | Cinere   | PEREMPUAN     |
++---------+-----------+----------+---------------+
+6 rows in set (0.000 sec)
+
+MariaDB [sekolah]> select NAMA_GURU from guru;
++-----------+
+| NAMA_GURU |
++-----------+
+| Supri     |
+| Maya      |
+| Lala      |
+| Akmal     |
+| Jamal     |
+| Susi      |
++-----------+
+6 rows in set (0.000 sec)
+
+MariaDB [sekolah]> select NAMA_GURU, JENIS_KELAMIN from guru;
++-----------+---------------+
+| NAMA_GURU | JENIS_KELAMIN |
++-----------+---------------+
+| Supri     | LAKI-LAKI     |
+| Maya      | PEREMPUAN     |
+| Lala      | PEREMPUAN     |
+| Akmal     | LAKI-LAKI     |
+| Jamal     | LAKI-LAKI     |
+| Susi      | PEREMPUAN     |
++-----------+---------------+
+6 rows in set (0.000 sec)
+
+MariaDB [sekolah]> select NAMA_GURU, JENIS_KELAMIN from guru where ID_GURU = "4";
++-----------+---------------+
+| NAMA_GURU | JENIS_KELAMIN |
++-----------+---------------+
+| Akmal     | LAKI-LAKI     |
++-----------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [sekolah]> select NAMA_GURU, JENIS_KELAMIN from guru where ID_GURU = "3";
++-----------+---------------+
+| NAMA_GURU | JENIS_KELAMIN |
++-----------+---------------+
+| Lala      | PEREMPUAN     |
++-----------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [sekolah]> select NAMA_GURU, ALAMAT from guru where ID_GURU IN (1,2,5);
++-----------+----------+
+| NAMA_GURU | ALAMAT   |
++-----------+----------+
+| Supri     | Ciputat  |
+| Maya      | Cirendeu |
+| Jamal     | Cinere   |
++-----------+----------+
+3 rows in set (0.000 sec)
+
+MariaDB [sekolah]> select NAMA_GURU, ALAMAT, JENIS_KELAMIN from guru where ID_GURU IN (1,2,3,4);
++-----------+----------+---------------+
+| NAMA_GURU | ALAMAT   | JENIS_KELAMIN |
++-----------+----------+---------------+
+| Supri     | Ciputat  | LAKI-LAKI     |
+| Maya      | Cirendeu | PEREMPUAN     |
+| Lala      | Legoso   | PEREMPUAN     |
+| Akmal     | PONCAB   | LAKI-LAKI     |
++-----------+----------+---------------+
+4 rows in set (0.000 sec)
+
+MariaDB [sekolah]> select ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN from guru where ID_GURU = "1";
++---------+-----------+---------+---------------+
+| ID_GURU | NAMA_GURU | ALAMAT  | JENIS_KELAMIN |
++---------+-----------+---------+---------------+
+| 1       | Supri     | Ciputat | LAKI-LAKI     |
++---------+-----------+---------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [sekolah]> select ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN from guru where ID_GURU = "2";
++---------+-----------+----------+---------------+
+| ID_GURU | NAMA_GURU | ALAMAT   | JENIS_KELAMIN |
++---------+-----------+----------+---------------+
+| 2       | Maya      | Cirendeu | PEREMPUAN     |
++---------+-----------+----------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [sekolah]> select ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN from guru where ID_GURU = "3";
++---------+-----------+--------+---------------+
+| ID_GURU | NAMA_GURU | ALAMAT | JENIS_KELAMIN |
++---------+-----------+--------+---------------+
+| 3       | Lala      | Legoso | PEREMPUAN     |
++---------+-----------+--------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [sekolah]> select ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN from guru where ID_GURU = "4";
++---------+-----------+--------+---------------+
+| ID_GURU | NAMA_GURU | ALAMAT | JENIS_KELAMIN |
++---------+-----------+--------+---------------+
+| 4       | Akmal     | PONCAB | LAKI-LAKI     |
++---------+-----------+--------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [sekolah]> select ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN from guru where ID_GURU = "5";
++---------+-----------+--------+---------------+
+| ID_GURU | NAMA_GURU | ALAMAT | JENIS_KELAMIN |
++---------+-----------+--------+---------------+
+| 5       | Jamal     | Cinere | LAKI-LAKI     |
++---------+-----------+--------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [sekolah]> select ID_GURU, NAMA_GURU, ALAMAT, JENIS_KELAMIN from guru where ID_GURU = "6";
++---------+-----------+--------+---------------+
+| ID_GURU | NAMA_GURU | ALAMAT | JENIS_KELAMIN |
++---------+-----------+--------+---------------+
+| 6       | Susi      | Cinere | PEREMPUAN     |
++---------+-----------+--------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [sekolah]> select ID_GURU from Guru;
++---------+
+| ID_GURU |
++---------+
+| 1       |
+| 2       |
+| 3       |
+| 4       |
+| 5       |
+| 6       |
++---------+
+6 rows in set (0.000 sec)
+
+MariaDB [sekolah]> select NAMA_GURU from guru;
++-----------+
+| NAMA_GURU |
++-----------+
+| Supri     |
+| Maya      |
+| Lala      |
+| Akmal     |
+| Jamal     |
+| Susi      |
++-----------+
+6 rows in set (0.000 sec)
+
+MariaDB [sekolah]> select ALAMAT from guru;
++----------+
+| ALAMAT   |
++----------+
+| Ciputat  |
+| Cirendeu |
+| Legoso   |
+| PONCAB   |
+| Cinere   |
+| Cinere   |
++----------+
+6 rows in set (0.000 sec)
+
+MariaDB [sekolah]> select JENIS_KELAMAIN from guru;
+ERROR 1054 (42S22): Unknown column 'JENIS_KELAMAIN' in 'field list'
+MariaDB [sekolah]> select JENIS_KELAMIN from guru;
++---------------+
+| JENIS_KELAMIN |
++---------------+
+| LAKI-LAKI     |
+| PEREMPUAN     |
+| PEREMPUAN     |
+| LAKI-LAKI     |
+| LAKI-LAKI     |
+| PEREMPUAN     |
++---------------+
+6 rows in set (0.000 sec)
+
+MariaDB [sekolah]>
